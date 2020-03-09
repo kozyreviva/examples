@@ -52,21 +52,13 @@ int main(int argc, char *argv[]) {
 }
 
 int move(int *mas,int n,int k) {
+	int i,t,s;
 	k%=n;
-	
-	invert(mas, n-k);
-	invert(mas+n-k, k);
-	invert(mas, n);
-	
-	return 1;
-}
-
-int invert(int *mas, int n) {
-	int i,t=0;
-	
-	for(i=0;i<n/2;i++) {
-		t=mas[i];
-		mas[i] = mas[n-i-1];
-		mas[n-i-1] = t;
+	for(s=0;s<k;s++) {
+		t= mas[n-1];
+		for(i=n-1;i>0;i--) {
+			mas[i] = mas[i-1];
+		}
+		mas[0] = t;
 	}
 }
